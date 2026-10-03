@@ -219,7 +219,8 @@ cells.append(code("""if status == "Succeeded":
     chart = comparison.set_index("Metric").loc[[KEY_METRICS[k] for k in (
         "eval/reward/pass_at_1", "eval/reward/pass_at_2", "eval/reward/mean")]]
     ax = chart.plot.bar(figsize=(8, 3.5), rot=0, ylim=(0, 1.05))
-    ax.set(title="Held-out tickets: before vs after training", ylabel="Score")
+    ax.set(title="Held-out tickets: before vs after training", ylabel="Score", xlabel="")
+    ax.set_xticklabels([label.replace(" (", "\\n(") for label in chart.index])  # two lines each, so they don't collide
     plt.show()
     print("Note: 64 rollouts per model, so differences under about 0.1 are within sampling noise.")"""))
 
