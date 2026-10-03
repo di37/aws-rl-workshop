@@ -1,0 +1,48 @@
+{
+  "job_name": "openai-reasoning-gpt-oss-20b-mtrl-20261002040558",
+  "submitted_at": "2026-10-02T00:05:59.015389+00:00",
+  "training_steps": 10,
+  "group_size": 4,
+  "global_batch_size": 32,
+  "job_arn": "arn:aws:sagemaker:us-west-2:384887233198:job/AgentRFT/openai-reasoning-gpt-oss-20b-mtrl-20261002040558",
+  "job_status": "Completed",
+  "secondary_status": "Completed",
+  "failure_reason": "",
+  "creation_time": "2026-10-02 04:05:58.345000+04:00",
+  "end_time": "2026-10-02 04:25:07.391000+04:00",
+  "duration_minutes": 19.2,
+  "output_model_package_arn": "arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1",
+  "billable_token_usage": {
+    "PrefillTokenCount": 4833702,
+    "SampleTokenCount": 778911,
+    "TrainTokenCount": 5599613
+  },
+  "progress_info": {
+    "BatchSize": 32,
+    "CurrentStep": 10,
+    "MaxSteps": 10,
+    "StepsPerEpoch": 2
+  },
+  "training_config": {
+    "BaseModelArn": "arn:aws:sagemaker:us-west-2:aws:hub-content/SageMakerPublicHub/Model/openai-reasoning-gpt-oss-20b/3.43.0",
+    "AcceptEula": true,
+    "MlflowConfig": {
+      "MlflowResourceArn": "arn:aws:sagemaker:us-west-2:384887233198:mlflow-app/app-N7OYBKIHZSQR",
+      "MlflowExperimentName": "mtrl-customer-support-demo",
+      "MlflowRunName": "train-10-steps-group-4"
+    },
+    "HyperParameters": {
+      "global_batch_size": "32",
+      "group_size": "4",
+      "max_epochs": "10",
+      "max_steps": "10",
+      "sampling_max_tokens": "512"
+    }
+  },
+  "agent_config": {
+    "BedrockAgentCoreConfig": {
+      "AgentRuntimeArn": "arn:aws:bedrock-agentcore:us-west-2:384887233198:runtime/mtrl_support_agent-OAXxBY5ULs",
+      "Qualifier": "DEFAULT"
+    }
+  }
+}

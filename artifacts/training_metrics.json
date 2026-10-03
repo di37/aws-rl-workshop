@@ -1,0 +1,75 @@
+{
+  "job_name": "openai-reasoning-gpt-oss-20b-mtrl-20261002040558",
+  "steps": [
+    {
+      "step": 1,
+      "rollout/reward/mean": 0.888671875,
+      "rollout/turns/mean": 6.484375,
+      "training/total_tokens": 534113.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 2,
+      "rollout/reward/mean": 0.890625,
+      "rollout/turns/mean": 6.796875,
+      "training/total_tokens": 571359.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 3,
+      "rollout/reward/mean": 0.91015625,
+      "rollout/turns/mean": 6.84375,
+      "training/total_tokens": 575191.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 4,
+      "rollout/reward/mean": 0.927734375,
+      "rollout/turns/mean": 6.6328125,
+      "training/total_tokens": 548452.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 5,
+      "rollout/reward/mean": 0.921875,
+      "rollout/turns/mean": 6.625,
+      "training/total_tokens": 544954.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 6,
+      "rollout/reward/mean": 0.908203125,
+      "rollout/turns/mean": 6.5,
+      "training/total_tokens": 533159.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 7,
+      "rollout/reward/mean": 0.92578125,
+      "rollout/turns/mean": 6.640625,
+      "training/total_tokens": 556316.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 8,
+      "rollout/reward/mean": 0.953125,
+      "rollout/turns/mean": 7.0234375,
+      "training/total_tokens": 600379.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 9,
+      "rollout/reward/mean": 0.921875,
+      "rollout/turns/mean": 7.0,
+      "training/total_tokens": 593296.0,
+      "training/num_trajectories": 128.0
+    },
+    {
+      "step": 10,
+      "rollout/reward/mean": 0.9609375,
+      "rollout/turns/mean": 6.5703125,
+      "training/total_tokens": 542394.0,
+      "training/num_trajectories": 128.0
+    }
+  ]
+}

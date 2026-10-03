@@ -1,0 +1,17 @@
+{
+  "job_name": "openai-reasoning-gpt-oss-20b-mtrl-20261002040240",
+  "submitted_at": "2026-10-02T00:02:41.618119+00:00",
+  "training_steps": 10,
+  "group_size": 4,
+  "global_batch_size": 32,
+  "job_arn": "arn:aws:sagemaker:us-west-2:384887233198:job/AgentRFT/openai-reasoning-gpt-oss-20b-mtrl-20261002040240",
+  "job_status": "Failed",
+  "secondary_status": "Failed",
+  "failure_reason": "ClientError: Training data has 32 prompts but global_batch_size is 32. The number of prompts must be greater than the batch size.",
+  "creation_time": "2026-10-02 04:02:40.865000+04:00",
+  "end_time": "2026-10-02 04:02:47.006000+04:00",
+  "duration_minutes": 0.1,
+  "output_model_package_arn": null,
+  "billable_token_usage": null,
+  "progress_info": null
+}

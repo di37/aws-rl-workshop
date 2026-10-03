@@ -1,0 +1,7 @@
+metric,label,first_attempt,baseline
+eval/reward/pass_at_1,Ticket fully solved (pass@1),0,0.5
+eval/reward/pass_at_2,Solved in 1 of 2 tries (pass@2),0,0.84375
+eval/reward/mean,Mean reward (with partial credit),0,0.875
+eval/reward/succeeded_rollouts,Rollouts fully solved,0,32.0
+eval/reward/failed_rollouts,Rollouts not fully solved,64,32.0
+eval/turns/mean,Model calls per rollout,2,5.84375

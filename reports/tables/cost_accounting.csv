@@ -1,0 +1,10 @@
+item,usd,source
+Base evaluation (first attempt),0.0069,billed tokens (BillableTokenUsage) x AWS Price List rate
+Base evaluation,0.0341,billed tokens (BillableTokenUsage) x AWS Price List rate
+Training,2.8296,billed tokens (BillableTokenUsage) x AWS Price List rate
+Comparison: base model,0.0355,billed tokens (BillableTokenUsage) x AWS Price List rate
+Comparison: fine-tuned model,0.0362,billed tokens (BillableTokenUsage) x AWS Price List rate
+Cross-region copy of weights to us-east-1 (41.8 GB x $0.02/GB),0.84,"computed or estimated; see the label (extra_costs.json, endpoint.json)"
+Bedrock imported model inference (estimate: 1 CMU x ~35 active min x $0.0572),2.0,"computed or estimated; see the label (extra_costs.json, endpoint.json)"
+Endpoint uptime,0.0,"computed or estimated; see the label (extra_costs.json, endpoint.json)"
+"Contingency (AgentCore, CodeBuild, S3, logs)",2.0,allowance for unmeasured items

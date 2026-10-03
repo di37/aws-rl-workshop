@@ -1,0 +1,11 @@
+# Tool settings for the SageMaker multi-turn RL workshop (no package build).
+# Run every test from the project root with:  python -m pytest
+
+[tool.pytest.ini_options]
+pythonpath = [".", "agent"]
+testpaths = ["tests", "agent"]
+addopts = "-q -p no:warnings"
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["legacy"]

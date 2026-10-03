@@ -1,0 +1,615 @@
+{
+  "seed": 2026,
+  "labels": {
+    "before": "Before training: base GPT-OSS-20B (Amazon Bedrock)",
+    "after": "After training: fine-tuned model (Bedrock Custom Model Import)"
+  },
+  "tickets": [
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My Wi-Fi works, but websites do not load.",
+      "before": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 0,
+          "policy_calls": 1,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "apply_config_fix",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      },
+      "after": {
+        "reward": 1.0,
+        "metrics": {
+          "task_completed": true,
+          "progress_steps": 4,
+          "turn_count": 4,
+          "actions_taken": [
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config",
+            "apply_config_fix"
+          ],
+          "text_fallback_actions": 4,
+          "policy_calls": 4,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "{\"action\":\"apply_config_fix\"}",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 2,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 3,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          },
+          {
+            "turn": 4,
+            "action": "apply_config_fix",
+            "accepted": true,
+            "observation": "The connection is restored.",
+            "reward": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The internet light changed from green to red.",
+      "before": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 0,
+          "policy_calls": 1,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "apply_config_fix",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      },
+      "after": {
+        "reward": 1.0,
+        "metrics": {
+          "task_completed": true,
+          "progress_steps": 4,
+          "turn_count": 4,
+          "actions_taken": [
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config",
+            "apply_config_fix"
+          ],
+          "text_fallback_actions": 4,
+          "policy_calls": 4,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "{\"action\":\"apply_config_fix\"}",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 2,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 3,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          },
+          {
+            "turn": 4,
+            "action": "apply_config_fix",
+            "accepted": true,
+            "observation": "The connection is restored.",
+            "reward": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My service stopped working after a plan change.",
+      "before": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 0,
+          "policy_calls": 1,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "Terminal reached. We need to apply_config_fix. But state shows terminal true. We need to choose an action - the last action was apply_config_fix. I guess not yet. We at terminal but we must pick the last action that resolves. We can respond with the action name? The instructions: \"If you cannot call the tool, reply with only the chosen action name.\" But we have already used all turns. The last state is terminal. We can proceed with recommended action apply_config_fix. But that would be extraneous. The environment indicates terminal true. So we must end. The final action is indeed 'apply_config_fix'. We'll output it.apply_config_fix",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      },
+      "after": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 4,
+          "policy_calls": 4,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "{\"action\":\"check_account_config\"}",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      }
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Every browser reports that I am offline.",
+      "before": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 0,
+          "policy_calls": 1,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "apply_config_fix",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      },
+      "after": {
+        "reward": 1.0,
+        "metrics": {
+          "task_completed": true,
+          "progress_steps": 4,
+          "turn_count": 4,
+          "actions_taken": [
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config",
+            "apply_config_fix"
+          ],
+          "text_fallback_actions": 4,
+          "policy_calls": 4,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "{\"action\":\"apply_config_fix\"}",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 2,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 3,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          },
+          {
+            "turn": 4,
+            "action": "apply_config_fix",
+            "accepted": true,
+            "observation": "The connection is restored.",
+            "reward": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The router broadcasts Wi-Fi but has no external connection.",
+      "before": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 0,
+          "policy_calls": 1,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      },
+      "after": {
+        "reward": 1.0,
+        "metrics": {
+          "task_completed": true,
+          "progress_steps": 4,
+          "turn_count": 4,
+          "actions_taken": [
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config",
+            "apply_config_fix"
+          ],
+          "text_fallback_actions": 4,
+          "policy_calls": 4,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "{\"action\":\"apply_config_fix\"}",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 2,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 3,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          },
+          {
+            "turn": 4,
+            "action": "apply_config_fix",
+            "accepted": true,
+            "observation": "The connection is restored.",
+            "reward": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The WAN indicator is red after this morning's update.",
+      "before": {
+        "reward": 0.75,
+        "metrics": {
+          "task_completed": false,
+          "progress_steps": 3,
+          "turn_count": 4,
+          "actions_taken": [
+            "restart_router",
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config"
+          ],
+          "text_fallback_actions": 0,
+          "policy_calls": 1,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "apply_config_fix",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "restart_router",
+            "accepted": false,
+            "observation": "Action 'restart_router' did not resolve the current state.",
+            "reward": 0.0
+          },
+          {
+            "turn": 2,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 3,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 4,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          }
+        ]
+      },
+      "after": {
+        "reward": 1.0,
+        "metrics": {
+          "task_completed": true,
+          "progress_steps": 4,
+          "turn_count": 4,
+          "actions_taken": [
+            "check_outage",
+            "inspect_router_lights",
+            "check_account_config",
+            "apply_config_fix"
+          ],
+          "text_fallback_actions": 4,
+          "policy_calls": 4,
+          "policy_error": "",
+          "action_order_seed": 2026
+        },
+        "summary": "{\"action\":\"apply_config_fix\"}",
+        "trace": [
+          {
+            "turn": 1,
+            "action": "check_outage",
+            "accepted": true,
+            "observation": "No area outage is detected.",
+            "reward": 0.25
+          },
+          {
+            "turn": 2,
+            "action": "inspect_router_lights",
+            "accepted": true,
+            "observation": "The router has a red WAN light.",
+            "reward": 0.5
+          },
+          {
+            "turn": 3,
+            "action": "check_account_config",
+            "accepted": true,
+            "observation": "The account has a configuration mismatch.",
+            "reward": 0.75
+          },
+          {
+            "turn": 4,
+            "action": "apply_config_fix",
+            "accepted": true,
+            "observation": "The connection is restored.",
+            "reward": 1.0
+          }
+        ]
+      }
+    }
+  ]
+}

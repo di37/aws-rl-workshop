@@ -1,0 +1,214 @@
+{
+  "Version": "2020-12-01",
+  "Metadata": {},
+  "Parameters": [],
+  "Steps": [
+    {
+      "Name": "CreateEvaluationAction",
+      "Type": "Lineage",
+      "Arguments": {
+        "Actions": [
+          {
+            "ActionName": {
+              "Get": "Execution.PipelineExecutionId"
+            },
+            "ActionType": "Evaluation",
+            "Source": {
+              "SourceUri": "arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1",
+              "SourceType": "ModelPackage"
+            },
+            "Properties": {
+              "PipelineExecutionArn": {
+                "Get": "Execution.PipelineExecutionArn"
+              },
+              "PipelineName": "SagemakerEvaluation-MTRLEvaluation"
+            }
+          }
+        ],
+        "Contexts": [
+          {
+            "ContextName": {
+              "Get": "Execution.PipelineExecutionId"
+            },
+            "ContextType": "PipelineExecution",
+            "Source": {
+              "SourceUri": {
+                "Get": "Execution.PipelineExecutionArn"
+              }
+            }
+          }
+        ],
+        "Associations": [
+          {
+            "Source": {
+              "Name": {
+                "Get": "Execution.PipelineExecutionId"
+              },
+              "Type": "Action"
+            },
+            "Destination": {
+              "Name": {
+                "Get": "Execution.PipelineExecutionId"
+              },
+              "Type": "Context"
+            },
+            "AssociationType": "ContributedTo"
+          }
+        ]
+      }
+    },
+    {
+      "Name": "EvaluateBaseModel",
+      "Type": "Job",
+      "DependsOn": [
+        "CreateEvaluationAction"
+      ],
+      "Arguments": {
+        "JobCategory": "AgentRFTEvaluation",
+        "RoleArn": "arn:aws:iam::384887233198:role/SageMakerMTRLJobRole",
+        "JobConfigSchemaVersion": "1.0.0",
+        "JobConfigDocument": "{\"AgentConfig\": {\"BedrockAgentCoreConfig\": {\"AgentRuntimeArn\": \"arn:aws:bedrock-agentcore:us-west-2:384887233198:runtime/mtrl_support_agent-OAXxBY5ULs\"}}, \"InputDataConfig\": [{\"ChannelName\": \"evaluation\", \"DataSource\": {\"S3DataSource\": {\"S3DataType\": \"S3Prefix\", \"S3Uri\": \"s3://sagemaker-mtrl-demo-384887233198-us-west-2/datasets/evaluation_prompts.parquet\"}}}], \"OutputDataConfig\": {\"S3OutputPath\": \"s3://sagemaker-mtrl-demo-384887233198-us-west-2/comparison-evaluation/\", \"MlflowConfig\": {\"MlflowResourceArn\": \"arn:aws:sagemaker:us-west-2:384887233198:mlflow-app/app-N7OYBKIHZSQR\", \"MlflowExperimentName\": \"mtrl-eval-openai-reasoning-gpt-oss-20b\", \"MlflowRunName\": \"base-model-eval\"}}, \"EvaluationConfig\": {\"BaseModelArn\": \"arn:aws:sagemaker:us-west-2:aws:hub-content/SageMakerPublicHub/Model/openai-reasoning-gpt-oss-20b/3.43.0\", \"AcceptEula\": true, \"HyperParameters\": {\"eval_group_size\": \"2\", \"success_threshold\": \"1.0\"}}, \"StoppingCondition\": {\"MaxRuntimeInSeconds\": 86400}}"
+      }
+    },
+    {
+      "Name": "EvaluateFineTunedModel",
+      "Type": "Job",
+      "DependsOn": [
+        "EvaluateBaseModel"
+      ],
+      "Arguments": {
+        "JobCategory": "AgentRFTEvaluation",
+        "RoleArn": "arn:aws:iam::384887233198:role/SageMakerMTRLJobRole",
+        "JobConfigSchemaVersion": "1.0.0",
+        "JobConfigDocument": "{\"AgentConfig\": {\"BedrockAgentCoreConfig\": {\"AgentRuntimeArn\": \"arn:aws:bedrock-agentcore:us-west-2:384887233198:runtime/mtrl_support_agent-OAXxBY5ULs\"}}, \"InputDataConfig\": [{\"ChannelName\": \"evaluation\", \"DataSource\": {\"S3DataSource\": {\"S3DataType\": \"S3Prefix\", \"S3Uri\": \"s3://sagemaker-mtrl-demo-384887233198-us-west-2/datasets/evaluation_prompts.parquet\"}}}], \"OutputDataConfig\": {\"S3OutputPath\": \"s3://sagemaker-mtrl-demo-384887233198-us-west-2/comparison-evaluation/\", \"MlflowConfig\": {\"MlflowResourceArn\": \"arn:aws:sagemaker:us-west-2:384887233198:mlflow-app/app-N7OYBKIHZSQR\", \"MlflowExperimentName\": \"mtrl-eval-openai-reasoning-gpt-oss-20b\", \"MlflowRunName\": \"fine-tuned-model-eval\"}}, \"EvaluationConfig\": {\"BaseModelArn\": \"arn:aws:sagemaker:us-west-2:aws:hub-content/SageMakerPublicHub/Model/openai-reasoning-gpt-oss-20b/3.43.0\", \"AcceptEula\": true, \"HyperParameters\": {\"eval_group_size\": \"2\", \"success_threshold\": \"1.0\"}}, \"ModelPackageConfig\": {\"InputModelPackageArn\": \"arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1\"}, \"StoppingCondition\": {\"MaxRuntimeInSeconds\": 86400}}"
+      }
+    },
+    {
+      "Name": "AssociateLineage",
+      "Type": "Lineage",
+      "DependsOn": [
+        "EvaluateFineTunedModel"
+      ],
+      "Arguments": {
+        "Artifacts": [
+          {
+            "ArtifactName": {
+              "Std:Join": {
+                "On": "-",
+                "Values": [
+                  {
+                    "Get": "Execution.PipelineExecutionId"
+                  },
+                  "base-eval-report"
+                ]
+              }
+            },
+            "ArtifactType": "EvaluationReport",
+            "Source": {
+              "SourceUri": {
+                "Get": "Steps.EvaluateBaseModel.JobConfigDocument.ServiceOutput.MlflowDetails.RunId"
+              }
+            },
+            "Properties": {
+              "MlflowExperimentId": {
+                "Get": "Steps.EvaluateBaseModel.JobConfigDocument.ServiceOutput.MlflowDetails.ExperimentId"
+              },
+              "MlflowRunName": {
+                "Get": "Steps.EvaluateBaseModel.JobConfigDocument.ServiceOutput.MlflowDetails.RunName"
+              }
+            }
+          },
+          {
+            "ArtifactName": {
+              "Std:Join": {
+                "On": "-",
+                "Values": [
+                  {
+                    "Get": "Execution.PipelineExecutionId"
+                  },
+                  "fine-tuned-eval-report"
+                ]
+              }
+            },
+            "ArtifactType": "EvaluationReport",
+            "Source": {
+              "SourceUri": {
+                "Get": "Steps.EvaluateFineTunedModel.JobConfigDocument.ServiceOutput.MlflowDetails.RunId"
+              }
+            },
+            "Properties": {
+              "MlflowExperimentId": {
+                "Get": "Steps.EvaluateFineTunedModel.JobConfigDocument.ServiceOutput.MlflowDetails.ExperimentId"
+              },
+              "MlflowRunName": {
+                "Get": "Steps.EvaluateFineTunedModel.JobConfigDocument.ServiceOutput.MlflowDetails.RunName"
+              }
+            }
+          }
+        ],
+        "Associations": [
+          {
+            "Source": {
+              "Name": {
+                "Std:Join": {
+                  "On": "-",
+                  "Values": [
+                    {
+                      "Get": "Execution.PipelineExecutionId"
+                    },
+                    "base-eval-report"
+                  ]
+                }
+              },
+              "Type": "Artifact"
+            },
+            "Destination": {
+              "Arn": {
+                "Std:Join": {
+                  "On": "/",
+                  "Values": [
+                    "arn:aws:sagemaker:us-west-2:384887233198:action",
+                    {
+                      "Get": "Execution.PipelineExecutionId"
+                    }
+                  ]
+                }
+              }
+            },
+            "AssociationType": "ContributedTo"
+          },
+          {
+            "Source": {
+              "Name": {
+                "Std:Join": {
+                  "On": "-",
+                  "Values": [
+                    {
+                      "Get": "Execution.PipelineExecutionId"
+                    },
+                    "fine-tuned-eval-report"
+                  ]
+                }
+              },
+              "Type": "Artifact"
+            },
+            "Destination": {
+              "Arn": {
+                "Std:Join": {
+                  "On": "/",
+                  "Values": [
+                    "arn:aws:sagemaker:us-west-2:384887233198:action",
+                    {
+                      "Get": "Execution.PipelineExecutionId"
+                    }
+                  ]
+                }
+              }
+            },
+            "AssociationType": "ContributedTo"
+          }
+        ]
+      }
+    }
+  ]
+}

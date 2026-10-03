@@ -1,0 +1,21 @@
+{
+  "captured_at": "2026-10-02T09:31:55+00:00",
+  "splits": [
+    {
+      "split": "training",
+      "s3_uri": "s3://sagemaker-mtrl-demo-384887233198-us-west-2/datasets/training_prompts.parquet",
+      "last_modified": "2026-10-02T00:05:39+00:00",
+      "etag": "b869697557fac015ea71807921c65b60",
+      "rows": 64,
+      "prompts_match_csv": true
+    },
+    {
+      "split": "evaluation",
+      "s3_uri": "s3://sagemaker-mtrl-demo-384887233198-us-west-2/datasets/evaluation_prompts.parquet",
+      "last_modified": "2026-10-01T22:37:50+00:00",
+      "etag": "8bd11c9336636c8cad5cbeafbd96755e",
+      "rows": 32,
+      "prompts_match_csv": true
+    }
+  ]
+}

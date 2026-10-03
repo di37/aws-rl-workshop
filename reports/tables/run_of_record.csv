@@ -1,0 +1,9 @@
+stage,identifier,status,detail
+Base evaluation (first attempt),59n0c9w40lyx,Succeeded,"pass@1 0, mean reward 0"
+Base evaluation,7kz12i8e43ip,Succeeded,"pass@1 0.5, mean reward 0.875"
+Training (rejected attempt),openai-reasoning-gpt-oss-20b-mtrl-20261002040240,Failed,ClientError: Training data has 32 prompts but global_batch_size is 32. The number of prompts must be greater than the batch size.
+Training,openai-reasoning-gpt-oss-20b-mtrl-20261002040558,Completed,10/10 steps in 19.2 min; model package arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1
+Comparison evaluation,8hvze02od4o0,Succeeded,pass@1 base 0.578125 -> fine-tuned 0.78125
+SageMaker endpoint,mtrl-support-demo,Deleted,Unable to provision requested ML compute capacity due to InsufficientInstanceCapacity error; billed $0.0
+Bedrock import,mtrl-support-import-20261002051532,Completed,imported model arn:aws:bedrock:us-east-1:384887233198:imported-model/ffakmfmpoqbi
+Live inference,seed 2026,Recorded,"fully solved: before 0/6, after 5/6"

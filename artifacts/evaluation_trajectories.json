@@ -1,0 +1,3629 @@
+{
+  "pairs": [
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My Wi-Fi works, but websites do not load.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My Wi-Fi works, but websites do not load.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says Wi-Fi works but websites do not load. That suggests DNS or routing issue. We can check outage or restart router. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My Wi-Fi works, but websites do not load.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says Wi-Fi works but websites do not load. That suggests DNS or routing issue. We have actions: restart_router, check_outage, close_ticket. Likely restart_router. Use tool.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My Wi-Fi works, but websites do not load.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says Wi-Fi works but websites do not load. That suggests DNS or routing issue. We have actions: restart_router, close_ticket, check_outage. We should check for outage first. So call check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My Wi-Fi works, but websites do not load.",
+          "reward": 0.25,
+          "first_thought": "We need to choose an action. The customer says Wi-Fi works but websites do not load. That suggests DNS or routing issue. We can check outage or restart router. The first step: check outage. Let's do that.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The internet light changed from green to red.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet light changed from green to red.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet light changed from green to red.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says internet light changed from green to red. Likely need to restart router. So action: restart_router.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet light changed from green to red.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet light changed from green to red.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My service stopped working after a plan change.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My service stopped working after a plan change.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My service stopped working after a plan change.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says service stopped after plan change. We can check outage. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": false,
+              "observation": ""
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My service stopped working after a plan change.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says service stopped after plan change. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My service stopped working after a plan change.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says service stopped after plan change. We can check outage. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": false,
+              "observation": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Every browser reports that I am offline.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every browser reports that I am offline.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The first step: likely restart_router. Use tool.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every browser reports that I am offline.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The first step: likely restart_router. Use tool.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every browser reports that I am offline.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every browser reports that I am offline.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The router broadcasts Wi-Fi but has no external connection.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router broadcasts Wi-Fi but has no external connection.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router broadcasts Wi-Fi but no external connection. Likely need to restart router. So action: restart_router.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router broadcasts Wi-Fi but has no external connection.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router broadcasts Wi-Fi but has no external connection.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router broadcasts Wi-Fi but no external connection. Likely need to restart router. So action: restart_router.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router broadcasts Wi-Fi but has no external connection.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router broadcasts Wi-Fi but no external connection. Likely need to restart router. So choose \"restart_router\".",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The WAN indicator is red after this morning's update.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN indicator is red after this morning's update.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN indicator is red after this morning's update.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. The first action: likely restart_router. Let's do that.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN indicator is red after this morning's update.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The WAN indicator is red after update. Likely need to restart router. But first check outage? Usually check outage first. But we have 4 turns. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN indicator is red after this morning's update.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: All of my smart-home devices lost access at once.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: All of my smart-home devices lost access at once.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: restart_router.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: All of my smart-home devices lost access at once.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: All of my smart-home devices lost access at once.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: All of my smart-home devices lost access at once.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says all smart-home devices lost access at once. Likely a router issue. We can restart router. Let's do that.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Rebooting both modem and router changed nothing.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Rebooting both modem and router changed nothing.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. The available actions: close_ticket, restart_router, check_outage. The customer already rebooted modem and router, but we can still try restart_router? But they said rebooting both modem and router changed nothing. Maybe check_outage. So we should call check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Rebooting both modem and router changed nothing.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. Available actions: check_outage, close_ticket, restart_router. The customer already rebooted modem and router, but we can still try restart_router? But they said rebooting both modem and router changed nothing. Maybe restart_router again? But maybe check_outage to see if there's a known outage. So first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Rebooting both modem and router changed nothing.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. Available actions: close_ticket, check_outage, restart_router. The customer already rebooted modem and router, but we can try restart_router again? But maybe check_outage is better. We have 4 turns. Let's first check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Rebooting both modem and router changed nothing.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action from available_actions: restart_router, check_outage, close_ticket. The customer already rebooted both modem and router, but we can still try restart_router? But they said rebooting both modem and router changed nothing. Maybe we should check for outage. So action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Service disappeared after my account details changed.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Service disappeared after my account details changed.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. We have available actions: close_ticket, restart_router, check_outage. We need to resolve outage. Likely check outage first. Use tool.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Service disappeared after my account details changed.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. We have available actions: restart_router, check_outage, close_ticket. We need to resolve outage. First step: check outage. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Service disappeared after my account details changed.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says service disappeared after account details changed. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Service disappeared after my account details changed.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My devices connect locally but cannot reach cloud services.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My devices connect locally but cannot reach cloud services.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. The first action likely check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My devices connect locally but cannot reach cloud services.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. The first action likely check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My devices connect locally but cannot reach cloud services.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My devices connect locally but cannot reach cloud services.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. The first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The router dashboard reports no upstream service.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router dashboard reports no upstream service.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router dashboard reports no upstream service.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says router dashboard reports no upstream service. We have actions: close_ticket, check_outage, restart_router. We should check for outage first. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router dashboard reports no upstream service.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says router dashboard reports no upstream service. We have actions: close_ticket, check_outage, restart_router. We should check for outage first. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router dashboard reports no upstream service.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says router dashboard reports no upstream service. Likely need to check outage. So first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Internet access failed after the provider migrated my account.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Internet access failed after the provider migrated my account.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says internet access failed after provider migrated account. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Internet access failed after the provider migrated my account.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Internet access failed after the provider migrated my account.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Internet access failed after the provider migrated my account.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says internet access failed after provider migrated account. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The WAN status is red although Wi-Fi strength is excellent.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN status is red although Wi-Fi strength is excellent.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN status is red although Wi-Fi strength is excellent.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN status is red although Wi-Fi strength is excellent.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The WAN status is red although Wi-Fi strength is excellent.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Every application times out on every device.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every application times out on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every application times out on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every application times out on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Every application times out on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. We have 4 turns. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My connection vanished shortly after a subscription change.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My connection vanished shortly after a subscription change.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My connection vanished shortly after a subscription change.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My connection vanished shortly after a subscription change.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": false,
+              "observation": ""
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My connection vanished shortly after a subscription change.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says connection vanished after subscription change. We have actions: close_ticket, restart_router, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The router is powered and broadcasting but nothing loads.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router is powered and broadcasting but nothing loads.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says router is powered and broadcasting but nothing loads. Likely need to restart router. But we could also check outage. Usually check outage first. But we have 4 turns. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router is powered and broadcasting but nothing loads.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router is powered and broadcasting but nothing loads. Likely need to restart router. But we can also check outage. Which is first? Usually check outage first. But we have 4 turns. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router is powered and broadcasting but nothing loads.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says router is powered and broadcasting but nothing loads. Likely need to restart router. But we could also check outage. Which is more appropriate? Usually check outage first. But we have 4 turns. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router is powered and broadcasting but nothing loads.",
+          "reward": 0.0,
+          "first_thought": "We need to choose an action. The customer says router is powered and broadcasting but nothing loads. Likely need to restart router. So action: restart_router.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Phones and computers all say no internet access.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Phones and computers all say no internet access.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Phones and computers all say no internet access.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step is likely to check for outage. So we call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Phones and computers all say no internet access.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step is likely to check for outage. So we call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Phones and computers all say no internet access.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check outage. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The external network light is solid red.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The external network light is solid red.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action from available_actions: check_outage, restart_router, close_ticket. The customer says external network light is solid red. Likely need to check outage. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The external network light is solid red.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says external network light is solid red. Likely need to check outage. So action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The external network light is solid red.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action from available_actions: check_outage, close_ticket, restart_router. The customer says external network light is solid red. Likely need to check outage. So first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The external network light is solid red.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says external network light is solid red. Likely need to check outage. So action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: I lost service after customer support modified my account.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I lost service after customer support modified my account.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I lost service after customer support modified my account.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I lost service after customer support modified my account.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. We have 4 turns. We need to resolve outage. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I lost service after customer support modified my account.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. We have available actions: close_ticket, restart_router, check_outage. We need to resolve outage. First step: check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Local network sharing works but the internet does not.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Local network sharing works but the internet does not.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says local network sharing works but internet does not. Likely router issue. First action: restart_router.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Local network sharing works but the internet does not.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says local network sharing works but internet does not. Likely router issue. We can check outage or restart router. Let's first check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Local network sharing works but the internet does not.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says local network sharing works but internet does not. Likely router issue. First action: check_outage or restart_router. Usually check_outage first. Let's do check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Local network sharing works but the internet does not.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says local network sharing works but internet does not. Likely router issue. First action: check_outage. Let's do that.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The modem status page shows an upstream fault.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The modem status page shows an upstream fault.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The modem status page shows an upstream fault.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action. The first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The modem status page shows an upstream fault.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. The first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The modem status page shows an upstream fault.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. The first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Our connection dropped immediately after a package change.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our connection dropped immediately after a package change.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says connection dropped after a package change. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our connection dropped immediately after a package change.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our connection dropped immediately after a package change.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our connection dropped immediately after a package change.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Video streaming and websites fail throughout the house.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Video streaming and websites fail throughout the house.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Video streaming and websites fail throughout the house.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step is likely to check for outage. So we call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Video streaming and websites fail throughout the house.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Video streaming and websites fail throughout the house.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The internet indicator turned red without warning.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet indicator turned red without warning.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says internet indicator turned red. We have actions: close_ticket, restart_router, check_outage. Likely restart_router first. Use tool.",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet indicator turned red without warning.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says internet indicator turned red. We have actions: close_ticket, restart_router, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet indicator turned red without warning.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says internet indicator turned red. We have actions: close_ticket, restart_router, check_outage. We should first check for outage. So call check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The internet indicator turned red without warning.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Wi-Fi is visible on all devices but none can go online.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Wi-Fi is visible on all devices but none can go online.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The first step: check outage. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Wi-Fi is visible on all devices but none can go online.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": false,
+              "observation": ""
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Wi-Fi is visible on all devices but none can go online.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Wi-Fi is visible on all devices but none can go online.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: My account was migrated and the connection stopped.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My account was migrated and the connection stopped.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says account migrated and connection stopped. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My account was migrated and the connection stopped.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My account was migrated and the connection stopped.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: My account was migrated and the connection stopped.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says account migrated and connection stopped. We have actions: close_ticket, restart_router, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The router reports connected devices but no internet route.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router reports connected devices but no internet route.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router reports connected devices but no internet route. Likely restart router. So we call take_support_action with action \"restart_router\".",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router reports connected devices but no internet route.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router reports connected devices but no internet route.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router reports connected devices but no internet route. We have actions: close_ticket, restart_router, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router reports connected devices but no internet route.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Restarting the equipment did not clear the red WAN light.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Restarting the equipment did not clear the red WAN light.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says restarting equipment did not clear red WAN light. We have available actions: restart_router, check_outage, close_ticket. We should check outage. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Restarting the equipment did not clear the red WAN light.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says restarting equipment did not clear red WAN light. We have available actions: restart_router, check_outage, close_ticket. We should check outage. So call take_support_action with action \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Restarting the equipment did not clear the red WAN light.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. The first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Restarting the equipment did not clear the red WAN light.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. The first action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: Our whole home has been offline since the account update.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our whole home has been offline since the account update.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our whole home has been offline since the account update.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our whole home has been offline since the account update.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": false,
+              "observation": ""
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: Our whole home has been offline since the account update.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: I have full wireless signal and zero internet connectivity.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I have full wireless signal and zero internet connectivity.",
+          "reward": 0.0,
+          "first_thought": "We need to choose an action. The customer has full wireless signal but no internet connectivity. Likely need to restart router. So choose \"restart_router\".",
+          "steps": [
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I have full wireless signal and zero internet connectivity.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I have full wireless signal and zero internet connectivity.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: I have full wireless signal and zero internet connectivity.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The broadband connection is down on every device.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The broadband connection is down on every device.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The broadband connection is down on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step: check outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The broadband connection is down on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The broadband connection is down on every device.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The first step is to check for outage. So action: \"check_outage\".",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ticket": "Resolve the customer's internet outage. Customer says: The router's external link failed after a service change.",
+      "before": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router's external link failed after a service change.",
+          "reward": 1.0,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router's external link failed after a service change.",
+          "reward": 0.75,
+          "first_thought": "We need to choose an action. The customer says router's external link failed after a service change. We have actions: close_ticket, restart_router, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router's external link failed after a service change.",
+          "reward": 0.75,
+          "first_thought": "We need to use take_support_action tool. First action: check_outage.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "restart_router",
+              "accepted": false,
+              "observation": "Action 'restart_router' did not resolve the current state."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            }
+          ]
+        },
+        {
+          "ticket": "Resolve the customer's internet outage. Customer says: The router's external link failed after a service change.",
+          "reward": 1.0,
+          "first_thought": "We need to choose an action. The customer says router's external link failed after a service change. We have actions: restart_router, close_ticket, check_outage. Likely check_outage first.",
+          "steps": [
+            {
+              "action": "check_outage",
+              "accepted": true,
+              "observation": "No area outage is detected."
+            },
+            {
+              "action": "inspect_router_lights",
+              "accepted": true,
+              "observation": "The router has a red WAN light."
+            },
+            {
+              "action": "check_account_config",
+              "accepted": true,
+              "observation": "The account has a configuration mismatch."
+            },
+            {
+              "action": "apply_config_fix",
+              "accepted": true,
+              "observation": "The connection is restored."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "improved": 13,
+    "same": 13,
+    "worse": 6
+  }
+}

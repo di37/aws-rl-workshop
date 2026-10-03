@@ -1,0 +1,6 @@
+{
+  "arn": "arn:aws:sagemaker:us-west-2:384887233198:pipeline/SagemakerEvaluation-MTRLEvaluation/execution/8hvze02od4o0",
+  "name": "eval-openai-1ad03ee5",
+  "started_at": "2026-10-02T00:27:00.104640+00:00",
+  "status": "Succeeded"
+}

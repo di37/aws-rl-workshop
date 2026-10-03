@@ -1,0 +1,182 @@
+{
+  "generated": "2026-10-02T10:43:40+00:00",
+  "study": "Multi-turn RL (SageMaker MTRL) of a customer-support troubleshooting agent",
+  "official_guide": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-customize-mtrl.html",
+  "platform": {
+    "system": "Darwin",
+    "release": "25.3.0",
+    "machine": "arm64",
+    "python": "3.12.10"
+  },
+  "aws": {
+    "region": "us-west-2",
+    "bedrock_import_region": "us-east-1"
+  },
+  "task": {
+    "success_path": [
+      "new_ticket",
+      "no_outage",
+      "red_wan_light",
+      "config_mismatch",
+      "resolved"
+    ],
+    "max_turns": 4,
+    "reward": "0.25 per correct step; 1.0 when the connection is restored"
+  },
+  "datasets": [
+    {
+      "file": "training_prompts.csv",
+      "rows": 64,
+      "unique_rows": 64,
+      "sha256": "1c61077a792df2c7ce19a00f38abe8b96a2bf146abe031c41fd8ab7c6c807277"
+    },
+    {
+      "file": "evaluation_prompts.csv",
+      "rows": 32,
+      "unique_rows": 32,
+      "sha256": "213538946018bdc334ed3b764ccaf16bee8f9bc9bef514adc5899608221e60cf"
+    }
+  ],
+  "model": {
+    "sagemaker_hub_model_id": "openai-reasoning-gpt-oss-20b",
+    "bedrock_base_model_id": "openai.gpt-oss-20b-1:0",
+    "imported_model_name": "mtrl-support-gpt-oss-20b-ft"
+  },
+  "training": {
+    "job_name": "openai-reasoning-gpt-oss-20b-mtrl-20261002040558",
+    "base_model_hub_content": "arn:aws:sagemaker:us-west-2:aws:hub-content/SageMakerPublicHub/Model/openai-reasoning-gpt-oss-20b/3.43.0",
+    "job_hyperparameters": {
+      "global_batch_size": "32",
+      "group_size": "4",
+      "max_epochs": "10",
+      "max_steps": "10",
+      "sampling_max_tokens": "512"
+    },
+    "approved_size": {
+      "steps": 10,
+      "prompts_per_step": 32,
+      "rollouts_per_prompt": 4
+    },
+    "other_hyperparameters": "service defaults for the hub content version above"
+  },
+  "evaluation": {
+    "rollouts_per_prompt": 2,
+    "sampling_max_tokens": 512,
+    "pass_k_values": [
+      1,
+      2
+    ]
+  },
+  "seeds": {
+    "live_inference_seed": 2026,
+    "live_inference_tickets": "first 6 held-out prompts, file order",
+    "rollout_action_order": "random per episode in the AgentCore runtime; recorded per rollout",
+    "service_side": "MTRL sampling and LoRA updates expose no seed; reruns vary within sampling noise"
+  },
+  "run_of_record": [
+    {
+      "stage": "Base evaluation (first attempt)",
+      "identifier": "59n0c9w40lyx",
+      "status": "Succeeded",
+      "detail": "pass@1 0, mean reward 0"
+    },
+    {
+      "stage": "Base evaluation",
+      "identifier": "7kz12i8e43ip",
+      "status": "Succeeded",
+      "detail": "pass@1 0.5, mean reward 0.875"
+    },
+    {
+      "stage": "Training (rejected attempt)",
+      "identifier": "openai-reasoning-gpt-oss-20b-mtrl-20261002040240",
+      "status": "Failed",
+      "detail": "ClientError: Training data has 32 prompts but global_batch_size is 32. The number of prompts must be greater than the batch size."
+    },
+    {
+      "stage": "Training",
+      "identifier": "openai-reasoning-gpt-oss-20b-mtrl-20261002040558",
+      "status": "Completed",
+      "detail": "10/10 steps in 19.2 min; model package arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1"
+    },
+    {
+      "stage": "Comparison evaluation",
+      "identifier": "8hvze02od4o0",
+      "status": "Succeeded",
+      "detail": "pass@1 base 0.578125 -> fine-tuned 0.78125"
+    },
+    {
+      "stage": "SageMaker endpoint",
+      "identifier": "mtrl-support-demo",
+      "status": "Deleted",
+      "detail": "Unable to provision requested ML compute capacity due to InsufficientInstanceCapacity error; billed $0.0"
+    },
+    {
+      "stage": "Bedrock import",
+      "identifier": "mtrl-support-import-20261002051532",
+      "status": "Completed",
+      "detail": "imported model arn:aws:bedrock:us-east-1:384887233198:imported-model/ffakmfmpoqbi"
+    },
+    {
+      "stage": "Live inference",
+      "identifier": "seed 2026",
+      "status": "Recorded",
+      "detail": "fully solved: before 0/6, after 5/6"
+    }
+  ],
+  "provenance": {
+    "agent_runtime_version": "7",
+    "agent_image_digest": "sha256:af5cb1b29526c440f2cb77f4f62f81980b9291a7a3c9d349ca280a0fd45c603f",
+    "agent_base_image": "python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "agent_source_sha256": "c3507c9bf606754cd18cca659ffce779cfb48f020b4bb945f12d0247ae284430",
+    "imported_weights": {
+      "__model_info__.json": "not copied",
+      "__script_info__.json": "not copied",
+      "chat_template.jinja": "identical",
+      "chat_template.json": "identical",
+      "config.json": "identical",
+      "generation_config.json": "changed on purpose",
+      "inference.py": "not copied",
+      "model-00000-of-00002.safetensors": "same size",
+      "model-00001-of-00002.safetensors": "same size",
+      "model-00002-of-00002.safetensors": "same size",
+      "model.safetensors.index.json": "identical",
+      "o200k_base.tiktoken": "identical",
+      "special_tokens_map.json": "identical",
+      "tokenizer.json": "same size",
+      "tokenizer_config.json": "changed on purpose",
+      "version": "not copied"
+    }
+  },
+  "results": {
+    "baseline_pass_at_1": 0.5,
+    "comparison_pass_at_1": {
+      "base": 0.578125,
+      "fine_tuned": 0.78125
+    },
+    "comparison_mean_reward": {
+      "base": 0.8828125,
+      "fine_tuned": 0.92578125
+    },
+    "recorded_ticket_changes": {
+      "improved": 13,
+      "same": 13,
+      "worse": 6
+    },
+    "training_mean_reward": {
+      "first_step": 0.888671875,
+      "last_step": 0.9609375
+    },
+    "live_inference_solved": {
+      "before": 0,
+      "after": 5,
+      "tickets": 6
+    }
+  },
+  "cost_usd": {
+    "billed_tokens_usd": 2.94,
+    "computed_or_estimated_usd": 2.84,
+    "total_usd": 5.78,
+    "total_with_allowance_usd": 7.78,
+    "budget_cap_usd": 25
+  }
+}

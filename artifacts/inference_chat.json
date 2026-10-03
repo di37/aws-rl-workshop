@@ -1,0 +1,5 @@
+{
+  "component": "After training: fine-tuned model (Bedrock Custom Model Import)",
+  "message": "My internet is not working. What is the first troubleshooting step?",
+  "reply": "**First troubleshooting step:**  \nCheck that your device is actually connected to your network *and* that the network hardware (modem/router) is showing a healthy \u201cInternet\u201d signal.  \n\n1. **Verify the device\u2019s connection**  \n   - If you\u2019re on Wi\u2011Fi: make sure the icon shows you\u2019re connected to the right SSID.  \n   - If you\u2019re on a wired ethernet"
+}

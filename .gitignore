@@ -1,0 +1,34 @@
+# Shared: what is needed to run notebooks/sagemaker_mtrl_real_demo.ipynb and to check its results
+# (aws/, agent/, scripts/, data/, artifacts/ evidence, reports/, tests/, docs, pinned environments).
+# Everything below stays on your machine only.
+
+# Personal talk materials, other coursework, and superseded code
+/presentation/
+/REPRO_UL_*.pdf
+/legacy/
+/artifacts/superseded/
+/artifacts/*cursor-version*.ipynb
+
+# Regenerated on every run (by the scripts, the notebook, or the AgentCore toolkit)
+/reports/logs/
+/artifacts/*.parquet
+/artifacts/endpoint_watchdog.heartbeat.json
+mtrl_eval_pipeline_input.json
+/agent/.bedrock_agentcore/
+/agent/.bedrock_agentcore.yaml
+
+# Python and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Local environments and secrets
+.venv*/
+.env
+
+# macOS
+.DS_Store

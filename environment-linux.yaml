@@ -1,0 +1,11 @@
+# SageMaker Multi-Turn RL workshop -- Linux environment (same pins; not yet verified on Linux).
+# Python 3.12 plus the exact pip pins of the run of record; create with:
+#   conda env create -f environment-linux.yaml && conda activate aws-mtrl
+name: aws-mtrl
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements-linux.txt

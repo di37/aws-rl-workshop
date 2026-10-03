@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "label": "Cross-region copy of weights to us-east-1 (41.8 GB x $0.02/GB)",
+      "usd": 0.84
+    },
+    {
+      "label": "Bedrock imported model inference (estimate: 1 CMU x ~35 active min x $0.0572)",
+      "usd": 2.0
+    }
+  ]
+}

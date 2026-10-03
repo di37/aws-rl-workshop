@@ -1,0 +1,20 @@
+step,command,note
+00,python scripts/00_verify_setup.py,offline: exact pins and datasets (--aws adds live checks)
+01,python scripts/01_provision.py --confirm CONFIRM_PROVISION_MTRL_DEMO,one-time setup
+02,python scripts/02_request_quotas.py --submit,free; approval can take hours
+03,python scripts/03_deploy_agent.py --confirm CONFIRM_DEPLOY_AGENT_MTRL_DEMO,CodeBuild minutes
+04,python scripts/04_upload_datasets.py,skips unchanged files; then 00 --aws checks the setup
+05,python scripts/05_base_evaluation.py --confirm CONFIRM_BASE_EVAL_MTRL_DEMO,billable
+06,python scripts/06_train.py --confirm CONFIRM_TRAIN_MTRL_DEMO,billable
+07,python scripts/07_compare_evaluation.py --confirm CONFIRM_COMPARISON_EVAL_MTRL_DEMO,billable
+08,python scripts/08_recorded_trajectories.py,read-only
+09a,python scripts/09a_deploy_endpoint.py --confirm CONFIRM_DEPLOY_MTRL_DEMO,"optional option 1, about $13 per hour; start scripts/09a_watchdog.py first"
+09b,python scripts/09b_bedrock_import.py --confirm CONFIRM_BEDROCK_IMPORT_MTRL_DEMO,"option 2; copy, then storage and per-minute use"
+10,python scripts/10_live_inference.py --confirm CONFIRM_LIVE_INFERENCE_MTRL_DEMO,billable
+11,python scripts/11_snapshot_costs.py,read-only; freezes billed usage and prices
+11b,python scripts/11b_snapshot_provenance.py,"read-only; records the agent image and source, datasets, and imported weights"
+12,python scripts/12_make_report_tables_and_figures.py,offline
+13,python scripts/13_build_repro_artifacts.py,offline
+14,python scripts/14_verify_invariants.py,offline; exits non-zero on failure
+15,python scripts/15_build_repro_sheet.py,offline; writes REPRO_SageMaker_MTRL.pdf (needs tectonic)
+99,python scripts/99_teardown.py --confirm DELETE_MTRL_DEMO,deletes the tracked demo resources (see README for leftovers); artifacts/ is kept

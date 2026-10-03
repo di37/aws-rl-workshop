@@ -1,0 +1,14 @@
+{
+  "endpoint_name": "mtrl-support-demo",
+  "instance_type": "ml.g6e.12xlarge",
+  "model_package_arn": "arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1",
+  "status": "Deleted",
+  "created_at": "2026-10-02T04:14:34.568460+00:00",
+  "created_epoch": 1790914474.56846,
+  "deadline_epoch": 1790918674.56846,
+  "deleted_at": "2026-10-02T04:52:57.246307+00:00",
+  "uptime_minutes": 38.4,
+  "billed_usd": 0.0,
+  "failure_reason": "FailedStatusError: Encountered unexpected failed state while waiting for Endpoint. Final Resource State: Failed. Failure Reason: Unable to provision requested ML compute capacity due to InsufficientInstanceCapacity error. Please retry using a different ML instance type or after some time. Consider configuring InstancePools in your EndpointConfig with multiple instance types for priority-based fallback to improve capacity availability.",
+  "billing_note": "Endpoint never reached InService (InsufficientInstanceCapacity); no instance was billed. Earlier value 8.39 assumed billing from creation."
+}

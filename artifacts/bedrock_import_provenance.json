@@ -1,0 +1,110 @@
+{
+  "captured_at": "2026-10-02T09:31:56+00:00",
+  "import_job": {
+    "arn": "arn:aws:bedrock:us-east-1:384887233198:model-import-job/zjrqt71h91om",
+    "status": "Completed",
+    "source_uri": "s3://sagemaker-mtrl-demo-384887233198-us-east-1/imported-models/mtrl-support-gpt-oss-20b-ft/",
+    "imported_model_arn": "arn:aws:bedrock:us-east-1:384887233198:imported-model/ffakmfmpoqbi",
+    "ended": "2026-10-02T05:29:18+00:00"
+  },
+  "model_package_arn": "arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1",
+  "merged_weights_uri": "s3://sagemaker-mtrl-demo-384887233198-us-west-2/training-output/openai-reasoning-gpt-oss-20b-mtrl-mpg/db5070d1813152c02c47-66e07d9f-438095550888-us-west-2-bf4f941c-014b-55aa-b27b-e14225a0a9c2-8/model/checkpoints/hf_merged/",
+  "files": [
+    {
+      "file": "__model_info__.json",
+      "source_bytes": 190,
+      "copy_bytes": null,
+      "verdict": "not copied"
+    },
+    {
+      "file": "__script_info__.json",
+      "source_bytes": 161,
+      "copy_bytes": null,
+      "verdict": "not copied"
+    },
+    {
+      "file": "chat_template.jinja",
+      "source_bytes": 13653,
+      "copy_bytes": 13653,
+      "verdict": "identical"
+    },
+    {
+      "file": "chat_template.json",
+      "source_bytes": 14385,
+      "copy_bytes": 14385,
+      "verdict": "identical"
+    },
+    {
+      "file": "config.json",
+      "source_bytes": 1588,
+      "copy_bytes": 1588,
+      "verdict": "identical"
+    },
+    {
+      "file": "generation_config.json",
+      "source_bytes": 165,
+      "copy_bytes": 176,
+      "verdict": "changed on purpose"
+    },
+    {
+      "file": "inference.py",
+      "source_bytes": 0,
+      "copy_bytes": null,
+      "verdict": "not copied"
+    },
+    {
+      "file": "model-00000-of-00002.safetensors",
+      "source_bytes": 16487374440,
+      "copy_bytes": 16487374440,
+      "verdict": "same size"
+    },
+    {
+      "file": "model-00001-of-00002.safetensors",
+      "source_bytes": 16493804168,
+      "copy_bytes": 16493804168,
+      "verdict": "same size"
+    },
+    {
+      "file": "model-00002-of-00002.safetensors",
+      "source_bytes": 8848382808,
+      "copy_bytes": 8848382808,
+      "verdict": "same size"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "source_bytes": 33597,
+      "copy_bytes": 33597,
+      "verdict": "identical"
+    },
+    {
+      "file": "o200k_base.tiktoken",
+      "source_bytes": 3613922,
+      "copy_bytes": 3613922,
+      "verdict": "identical"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "source_bytes": 98,
+      "copy_bytes": 98,
+      "verdict": "identical"
+    },
+    {
+      "file": "tokenizer.json",
+      "source_bytes": 27868174,
+      "copy_bytes": 27868174,
+      "verdict": "same size"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "source_bytes": 4200,
+      "copy_bytes": 18582,
+      "verdict": "changed on purpose"
+    },
+    {
+      "file": "version",
+      "source_bytes": 5,
+      "copy_bytes": null,
+      "verdict": "not copied"
+    }
+  ]
+}

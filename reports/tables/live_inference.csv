@@ -1,0 +1,7 @@
+ticket,before_reward,before_actions,before_error,after_reward,after_actions,after_error
+"My Wi-Fi works, but websites do not load.",0.75,restart_router > check_outage > inspect_router_lights > check_account_config,,1.0,check_outage > inspect_router_lights > check_account_config > apply_config_fix,
+The internet light changed from green to red.,0.75,restart_router > check_outage > inspect_router_lights > check_account_config,,1.0,check_outage > inspect_router_lights > check_account_config > apply_config_fix,
+My service stopped working after a plan change.,0.75,restart_router > check_outage > inspect_router_lights > check_account_config,,0.75,restart_router > check_outage > inspect_router_lights > check_account_config,
+Every browser reports that I am offline.,0.75,restart_router > check_outage > inspect_router_lights > check_account_config,,1.0,check_outage > inspect_router_lights > check_account_config > apply_config_fix,
+The router broadcasts Wi-Fi but has no external connection.,0.75,restart_router > check_outage > inspect_router_lights > check_account_config,,1.0,check_outage > inspect_router_lights > check_account_config > apply_config_fix,
+The WAN indicator is red after this morning's update.,0.75,restart_router > check_outage > inspect_router_lights > check_account_config,,1.0,check_outage > inspect_router_lights > check_account_config > apply_config_fix,

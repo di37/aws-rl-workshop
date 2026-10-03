@@ -1,0 +1,89 @@
+{
+  "captured_at": "2026-10-02T09:31:40+00:00",
+  "rates_usd_per_million_tokens": {
+    "evaluation_prefill": "0.1200000000",
+    "evaluation_sample": "0.3000000000",
+    "training_prefill": "0.1200000000",
+    "training_sample": "0.3000000000",
+    "training_train": "0.3600000000"
+  },
+  "hosting_usd_per_hour": "13.1158000000",
+  "items": [
+    {
+      "item": "Base evaluation (first attempt)",
+      "component": "Evaluation",
+      "usage": {
+        "PrefillTokenCount": 43488,
+        "SampleTokenCount": 5591
+      },
+      "usd": 0.0069,
+      "source": "billed tokens (BillableTokenUsage) x AWS Price List rate"
+    },
+    {
+      "item": "Base evaluation",
+      "component": "Evaluation",
+      "usage": {
+        "PrefillTokenCount": 197217,
+        "SampleTokenCount": 34617
+      },
+      "usd": 0.0341,
+      "source": "billed tokens (BillableTokenUsage) x AWS Price List rate"
+    },
+    {
+      "item": "Training",
+      "component": "Finetuning",
+      "usage": {
+        "PrefillTokenCount": 4833702,
+        "SampleTokenCount": 778911,
+        "TrainTokenCount": 5599613
+      },
+      "usd": 2.8296,
+      "source": "billed tokens (BillableTokenUsage) x AWS Price List rate"
+    },
+    {
+      "item": "Comparison: base model",
+      "component": "Evaluation",
+      "usage": {
+        "PrefillTokenCount": 212274,
+        "SampleTokenCount": 33573
+      },
+      "usd": 0.0355,
+      "source": "billed tokens (BillableTokenUsage) x AWS Price List rate"
+    },
+    {
+      "item": "Comparison: fine-tuned model",
+      "component": "Evaluation",
+      "usage": {
+        "PrefillTokenCount": 229165,
+        "SampleTokenCount": 28952
+      },
+      "usd": 0.0362,
+      "source": "billed tokens (BillableTokenUsage) x AWS Price List rate"
+    },
+    {
+      "item": "Cross-region copy of weights to us-east-1 (41.8 GB x $0.02/GB)",
+      "usd": 0.84,
+      "source": "computed or estimated; see the label (extra_costs.json, endpoint.json)"
+    },
+    {
+      "item": "Bedrock imported model inference (estimate: 1 CMU x ~35 active min x $0.0572)",
+      "usd": 2.0,
+      "source": "computed or estimated; see the label (extra_costs.json, endpoint.json)"
+    },
+    {
+      "item": "Endpoint uptime",
+      "usd": 0.0,
+      "source": "computed or estimated; see the label (extra_costs.json, endpoint.json)"
+    },
+    {
+      "item": "Contingency (AgentCore, CodeBuild, S3, logs)",
+      "usd": 2.0,
+      "source": "allowance for unmeasured items"
+    }
+  ],
+  "billed_tokens_usd": 2.94,
+  "computed_or_estimated_usd": 2.84,
+  "total_usd": 5.78,
+  "total_with_allowance_usd": 7.78,
+  "budget_cap_usd": 25
+}

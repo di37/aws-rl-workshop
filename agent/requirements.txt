@@ -1,0 +1,5 @@
+bedrock-agentcore==1.24.0
+pydantic==2.13.5
+sagemaker-core==2.23.0
+sagemaker-train==1.23.0
+strands-agents[openai]==1.57.2

@@ -1,0 +1,12 @@
+{
+  "account_id": "384887233198",
+  "region": "us-west-2",
+  "bucket": "sagemaker-mtrl-demo-384887233198-us-west-2",
+  "job_role_arn": "arn:aws:iam::384887233198:role/SageMakerMTRLJobRole",
+  "agent_role_arn": "arn:aws:iam::384887233198:role/SageMakerMTRLAgentCoreRole",
+  "ecr_uri": "384887233198.dkr.ecr.us-west-2.amazonaws.com/sagemaker-mtrl-support-agent",
+  "mlflow_app_arn": "arn:aws:sagemaker:us-west-2:384887233198:mlflow-app/app-N7OYBKIHZSQR",
+  "agent_runtime_arn": "arn:aws:bedrock-agentcore:us-west-2:384887233198:runtime/mtrl_support_agent-OAXxBY5ULs",
+  "agent_runtime_id": "mtrl_support_agent-OAXxBY5ULs",
+  "agent_runtime_status": "READY"
+}

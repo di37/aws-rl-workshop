@@ -1,0 +1,33 @@
+ticket,before_rewards,after_rewards,before_mean,after_mean,change
+"My Wi-Fi works, but websites do not load.",1.0; 0.75,1.0; 0.25,0.875,0.625,worse
+The internet light changed from green to red.,1.0; 0.75,1.0; 1.0,0.875,1.0,improved
+My service stopped working after a plan change.,0.75; 0.75,1.0; 0.75,0.75,0.875,improved
+Every browser reports that I am offline.,0.75; 0.75,1.0; 1.0,0.75,1.0,improved
+The router broadcasts Wi-Fi but has no external connection.,0.75; 1.0,0.75; 0.75,0.875,0.75,worse
+The WAN indicator is red after this morning's update.,0.75; 0.75,1.0; 1.0,0.75,1.0,improved
+All of my smart-home devices lost access at once.,0.75; 1.0,1.0; 0.75,0.875,0.875,same
+Rebooting both modem and router changed nothing.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+Service disappeared after my account details changed.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+My devices connect locally but cannot reach cloud services.,0.75; 1.0,1.0; 1.0,0.875,1.0,improved
+The router dashboard reports no upstream service.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+Internet access failed after the provider migrated my account.,1.0; 1.0,0.75; 1.0,1.0,0.875,worse
+The WAN status is red although Wi-Fi strength is excellent.,1.0; 0.75,1.0; 1.0,0.875,1.0,improved
+Every application times out on every device.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+My connection vanished shortly after a subscription change.,0.75; 1.0,0.75; 0.75,0.875,0.75,worse
+The router is powered and broadcasting but nothing loads.,1.0; 0.75,1.0; 0.0,0.875,0.5,worse
+Phones and computers all say no internet access.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+The external network light is solid red.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+I lost service after customer support modified my account.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+Local network sharing works but the internet does not.,0.75; 1.0,1.0; 0.75,0.875,0.875,same
+The modem status page shows an upstream fault.,1.0; 0.75,1.0; 1.0,0.875,1.0,improved
+Our connection dropped immediately after a package change.,0.75; 1.0,1.0; 1.0,0.875,1.0,improved
+Video streaming and websites fail throughout the house.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+The internet indicator turned red without warning.,0.75; 1.0,1.0; 1.0,0.875,1.0,improved
+Wi-Fi is visible on all devices but none can go online.,0.75; 0.75,1.0; 1.0,0.75,1.0,improved
+My account was migrated and the connection stopped.,1.0; 1.0,1.0; 0.75,1.0,0.875,worse
+The router reports connected devices but no internet route.,0.75; 0.75,0.75; 1.0,0.75,0.875,improved
+Restarting the equipment did not clear the red WAN light.,1.0; 1.0,1.0; 1.0,1.0,1.0,same
+Our whole home has been offline since the account update.,0.75; 1.0,0.75; 1.0,0.875,0.875,same
+I have full wireless signal and zero internet connectivity.,0.0; 0.75,1.0; 1.0,0.375,1.0,improved
+The broadband connection is down on every device.,0.75; 1.0,1.0; 1.0,0.875,1.0,improved
+The router's external link failed after a service change.,1.0; 0.75,0.75; 1.0,0.875,0.875,same

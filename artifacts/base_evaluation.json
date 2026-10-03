@@ -1,0 +1,7 @@
+{
+  "arn": "arn:aws:sagemaker:us-west-2:384887233198:pipeline/SagemakerEvaluation-MTRLEvaluation/execution/7kz12i8e43ip",
+  "name": "eval-openai-e7dfa5d2",
+  "s3_output_path": "s3://sagemaker-mtrl-demo-384887233198-us-west-2/base-evaluation/",
+  "mlflow_resource_arn": "arn:aws:sagemaker:us-west-2:384887233198:mlflow-app/app-N7OYBKIHZSQR",
+  "mlflow_experiment_name": "mtrl-eval-openai-reasoning-gpt-oss-20b"
+}

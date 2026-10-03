@@ -1,0 +1,12 @@
+{
+  "job_arn": "arn:aws:bedrock:us-east-1:384887233198:model-import-job/zjrqt71h91om",
+  "job_name": "mtrl-support-import-20261002051532",
+  "imported_model_name": "mtrl-support-gpt-oss-20b-ft",
+  "source_uri": "s3://sagemaker-mtrl-demo-384887233198-us-east-1/imported-models/mtrl-support-gpt-oss-20b-ft/",
+  "started_at": "2026-10-02T05:15:33.361456+00:00",
+  "status": "Completed",
+  "failure_message": null,
+  "imported_model_arn": "arn:aws:bedrock:us-east-1:384887233198:imported-model/ffakmfmpoqbi",
+  "ended_at": "2026-10-02 05:29:18.777000+00:00",
+  "model_package_arn": "arn:aws:sagemaker:us-west-2:384887233198:model-package/openai-reasoning-gpt-oss-20b-mtrl-mpg/1"
+}
