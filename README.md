@@ -4,153 +4,51 @@ A study of whether multi-turn reinforcement learning on Amazon SageMaker AI teac
 
 - **The agent:** GPT-OSS-20B inside a Strands agent on Amazon Bedrock AgentCore.
 - **The task:** a 4-turn internet-outage ticket where only one action per situation makes progress. Each correct step earns 0.25; a solved ticket earns 1.0.
-- **Measurement:** a baseline evaluation, then training (`MultiTurnRLTrainer`), then a base-versus-fine-tuned evaluation on held-out tickets (`MultiTurnRLEvaluator`).
-- **Deployment:** option 1, a SageMaker endpoint, was attempted but no GPU capacity was available. Option 2, Bedrock Custom Model Import, succeeded.
-- **Demo:** live before/after inference with the same agent.
+- **Measurement:** a baseline, then training (`MultiTurnRLTrainer`), then base vs fine-tuned on 32 held-out tickets (`MultiTurnRLEvaluator`).
+- **Deployment:** a SageMaker endpoint was attempted but no GPU capacity was available; Bedrock Custom Model Import succeeded.
 
-Every reported number can be rebuilt offline from the evidence in `artifacts/`, and 19 invariants check the data, the jobs, what actually ran, the costs and the outputs. The full recipe, with every number read from the evidence, is the [Reproducibility Sheet](REPRO_SageMaker_MTRL_community-day.pdf) (in the AWS Community Day talk's theme; `scripts/15` rebuilds the same content as `REPRO_SageMaker_MTRL.pdf`). Diagrams of each step are in [HOW_IT_WORKS.md](HOW_IT_WORKS.md).
+## Results
 
-The study runs in five parts:
+| Held-out tickets, 32 x 2 tries per model | Base | Fine-tuned |
+|---|---|---|
+| Fully solved (pass@1) | 0.578 | **0.781** |
+| Solved in 1 of 2 tries (pass@2) | 0.813 | **0.938** |
+| Live inference on Bedrock, 6 tickets | 0 of 6 | **5 of 6** |
 
-- **Part 1: Setup.** Pinned environment, AWS resources, quotas, the agent on AgentCore, and the datasets (`00`–`04`).
-- **Part 2: Baseline.** The untrained model, through the same agent, on 32 held-out tickets (`05`).
-- **Part 3: Training and evaluation.** 10 MTRL steps of 32 tickets x 4 rollouts each, then base vs fine-tuned on the same held-out tickets, with the recorded conversations (`06`–`08`).
-- **Part 4: Deployment and inference.** A SageMaker endpoint (option 1) or Bedrock Custom Model Import (option 2), then live before/after inference (`09a`, `09b`, `10`).
-- **Part 5: Records and reporting.** Cost and provenance snapshots, report tables and figures, the reproducibility record, and invariants (`11`–`14`).
+Training took 10 steps of 32 tickets x 4 tries (1,280 conversations) in 19.2 minutes for $2.83. The whole study cost $5.78 against a $25 hard cap.
 
-## Project layout
-
-```text
-aws-rl-workshop/
-├── README.md                 this guide: setup, run, results, reproducibility
-├── REPRO_SageMaker_MTRL_community-day.pdf  the reproducibility sheet, Community Day theme (scripts/15 rebuilds it plain)
-├── HOW_IT_WORKS.md           diagrams of every step
-├── notebooks/                what you show the audience
-│   ├── sagemaker_mtrl_real_demo.ipynb            demo notebook (replays the recorded run)
-│   ├── sagemaker_mtrl_real_demo.executed.ipynb   its executed copy, to present from
-│   └── sagemaker_mtrl_real_demo.training-run.ipynb   log of the live training run
-├── scripts/                  everything you run, in order: 00 … 14, then 99
-│   ├── 09a_watchdog.py       safety watchdog for the endpoint (option 1)
-│   ├── status.py             resource status, any time
-│   └── dev/                  notebook builder, checker, and scrubber
-├── aws/                      the library the scripts and the notebook use
-│   ├── workflow.py           one facade that wires everything: start reading here
-│   ├── config.py             settings, project paths, resource state
-│   ├── guards.py             exact confirmation phrases for billable steps
-│   ├── setup/                provisioning, quotas, agent deploy, dataset upload, status, teardown
-│   ├── rl/                   training, evaluation, pipeline status, recorded conversations
-│   ├── deploy/               endpoint + watchdog + image access, Bedrock import, live inference
-│   ├── costs/                budget guard, spend ledger, cost snapshot
-│   ├── records/              evidence store, provenance capture
-│   └── reporting/            tables, figures, repro record, invariants, provenance checks
-├── agent/                    the agent AgentCore runs (kept identical to what ran)
-├── tests/                    unit tests, in the same folders as aws/
-├── data/                     training and held-out prompts
-├── artifacts/                evidence of the run of record (inputs to the offline steps)
-├── reports/                  tables, figures, repro record, logs (outputs)
-├── pyproject.toml            pytest and ruff settings
-└── environment-*.yaml, requirements-*.txt    pinned environments
-```
+**Everything else is in the [Reproducibility Sheet](REPRO_SageMaker_MTRL_community-day.pdf):** job identifiers, data fingerprints, seeds, pinned versions, every result table, the cost breakdown, disclosures and the 19 invariant checks, all read from the evidence in `artifacts/`. It's in the AWS Community Day talk's theme; `scripts/15` rebuilds the same content as `REPRO_SageMaker_MTRL.pdf`. Diagrams of each step are in [HOW_IT_WORKS.md](HOW_IT_WORKS.md).
 
 ## Setup
 
 ```bash
-# conda (run of record: macOS 26 / Darwin 25.3, arm64, Python 3.12.10)
 conda env create -f environment-macos.yaml      # or environment-linux.yaml
 conda activate aws-mtrl
-# or, non-conda:  pip install -r requirements-macos.txt   (Linux: requirements-linux.txt)
-# exact:          pip install -r requirements-macos.lock.txt   (all 259 installed distributions)
+# or: pip install -r requirements-macos.txt     (exact: requirements-macos.lock.txt)
 ```
 
-There are three levels of pinning:
-
-- **Direct dependencies.** `requirements-macos.txt` pins the 25 direct dependencies:
-
-  | Package | Version |
-  |---|---|
-  | sagemaker | 3.23.0 |
-  | sagemaker-train, sagemaker-serve, sagemaker-mlops | 1.23.0 |
-  | sagemaker-core | 2.23.0 |
-  | boto3 | 1.43.107 |
-  | strands-agents | 1.57.2 |
-  | bedrock-agentcore | 1.24.0 |
-  | mlflow | 3.16.1 |
-  | pandas | 3.0.6 |
-  | matplotlib | 3.11.2 |
-
-- **Full lock.** `requirements-macos.lock.txt` freezes every installed distribution of that environment, which is the one that ran the scripts and the live inference. The Linux file has the same direct pins but has not been verified on Linux.
-- **Agent container.** `agent/requirements.lock.txt` lists the exact 139 packages of the image that served every rollout, read from its CodeBuild log, plus the base image digest. `agent/requirements.txt` pins the five direct dependencies at the versions that image resolved.
-
-AWS steps need credentials for an account with SageMaker AI, Bedrock and AgentCore access in **us-west-2**. Bedrock imports of GPT-OSS run in us-east-1. Every script pins the region itself.
-
-## Data
-
-Two prompt files define the study, and nothing is resampled:
-
-| File | Rows | SHA-256 |
-|---|---|---|
-| `data/training_prompts.csv` | 64 unique tickets | `1c61077a792df2c7ce19a00f38abe8b96a2bf146abe031c41fd8ab7c6c807277` |
-| `data/evaluation_prompts.csv` | 32 unique held-out tickets | `213538946018bdc334ed3b764ccaf16bee8f9bc9bef514adc5899608221e60cf` |
-
-The two sets do not overlap. `artifacts/dataset_provenance.json` records the S3 objects the jobs read:
-
-- **Contents.** They are identical to these files, prompt by prompt.
-- **Timing.** The training set was written at 00:05:39 UTC, 19 seconds before the training job started. The evaluation set was written before both evaluations started.
-
-Training needs more prompts than `global_batch_size` (32), which is why the set grew from 32 to 64 tickets. The original 32 are in `artifacts/training_prompts.32.csv`.
-
-**Seeds and randomness:**
-
-- **Live inference:** seed 2026 sets the order in which actions are listed, shared by both models. It runs on the first 6 held-out tickets, in file order.
-- **Training and evaluation rollouts:** each episode draws a random action order inside the AgentCore runtime and records it.
-- **Service-side sampling:** SageMaker MTRL sampling, LoRA updates and Bedrock sampling expose no seed, so a new run gives new samples (see *Reproducibility*).
+AWS steps need credentials for an account with SageMaker AI, Bedrock and AgentCore access in **us-west-2** (Bedrock imports of GPT-OSS run in us-east-1). Every script pins the region itself.
 
 ## Run
 
-The pipeline is the numbered scripts in `scripts/`. The same order is in `reports/repro/run_commands.csv`.
+The pipeline is the numbered scripts in `scripts/`. A billable step runs only with its exact `--confirm` phrase; without it, a script shows the recorded result. A recorded job is never submitted twice, and a budget guard enforces the $25 cap.
 
-- **Confirmation.** A billable step runs only with its exact `--confirm` phrase. Without it, a script shows the recorded result.
-- **No double submission.** A recorded job is re-attached and never submitted twice.
-- **Failed jobs.** A failed or stopped job is replaced only with a separate phrase: `CONFIRM_RETRY_BASE_EVAL_MTRL_DEMO`, `CONFIRM_RETRY_TRAIN_MTRL_DEMO` or `CONFIRM_REDEPLOY_MTRL_DEMO`. The failed record is archived and still counted in the costs.
-- **Live inference.** A later live run never overwrites the recorded one; it is saved beside it, named by UTC time.
-- **Budget.** The $25 hard cap is a budget guard that runs before training, the comparison, the endpoint, the Bedrock import and live inference. It projects spend from the tokens AWS billed for this account's baseline, with a 1.5x margin. `01_provision.py --budget-email` also creates an AWS Budget alert.
-
-**A. Rebuild every reported number offline.** This is free and needs no AWS account:
+**Rebuild every reported number, free and offline** (no AWS account needed):
 
 ```bash
 python scripts/00_verify_setup.py                    # exact pins, datasets, fingerprints
 python scripts/12_make_report_tables_and_figures.py  # artifacts/*.json -> reports/tables, reports/figures
-python scripts/13_build_repro_artifacts.py           # writes reports/repro (env, commands, metadata, costs, inventory)
-python scripts/14_verify_invariants.py               # prints PASS/FAIL checks (19/19); exits 1 on failure
-python scripts/15_build_repro_sheet.py               # REPRO_SageMaker_MTRL.pdf from the evidence (needs tectonic)
+python scripts/13_build_repro_artifacts.py           # reports/repro: environment, commands, metadata, costs
+python scripts/14_verify_invariants.py               # 19/19 PASS; exits 1 on failure
+python scripts/15_build_repro_sheet.py               # the PDF sheet, plain style (needs tectonic)
 ```
 
-**B. Re-attach to the recorded AWS jobs.** This applies in the run's account. It is read-only and submits nothing:
-
-```bash
-python scripts/00_verify_setup.py --aws              # adds the live account, model, runtime, and MLflow checks
-python scripts/05_base_evaluation.py                 # recorded baseline
-python scripts/06_train.py                           # recorded job; saves its own config and per-step metrics
-python scripts/07_compare_evaluation.py              # recorded base-vs-fine-tuned pipeline
-python scripts/08_recorded_trajectories.py           # recorded conversations; cross-checks the metrics
-python scripts/11_snapshot_costs.py                  # billed tokens x AWS Price List -> artifacts/cost_accounting.json
-python scripts/11b_snapshot_provenance.py            # what ran: agent image and source, datasets, imported weights
-```
-
-**C. Full run in your own account.** This costs about $6–8, depending on how long the imported model is used. First move this run's evidence and outputs aside:
-
-```bash
-mv artifacts artifacts-run-of-record
-mv reports reports-run-of-record
-mkdir artifacts
-```
-
-This also moves the run of record's resource IDs (`artifacts/resources.json`); step 01 writes yours. Then:
+**Repeat the study in your own account** (about $6–8). First move this run's evidence aside with `mv artifacts artifacts-run-of-record && mv reports reports-run-of-record && mkdir artifacts`, then:
 
 ```bash
 python scripts/00_verify_setup.py
 python scripts/01_provision.py --confirm CONFIRM_PROVISION_MTRL_DEMO [--budget-email you@example.com]
-python scripts/02_request_quotas.py --submit         # free; approval can take hours
+python scripts/02_request_quotas.py --submit         # free; approval can take hours, so start here
 python scripts/03_deploy_agent.py --confirm CONFIRM_DEPLOY_AGENT_MTRL_DEMO
 python scripts/04_upload_datasets.py
 python scripts/00_verify_setup.py --aws
@@ -170,164 +68,37 @@ python scripts/15_build_repro_sheet.py
 python scripts/99_teardown.py --confirm DELETE_MTRL_DEMO                            # when done
 ```
 
-Notes on the full run:
+- **Endpoint (09a).** Start `python scripts/09a_watchdog.py` in another terminal first; it deletes the endpoint after 60 minutes at the latest, and deployment refuses to start without it.
+- **Rebuilding the agent.** Redeploying a runtime that is already READY needs `CONFIRM_REDEPLOY_AGENT_MTRL_DEMO`, because recorded jobs used it.
+- **Costs AWS doesn't report per job** (the cross-region copy, imported-model minutes, Bedrock storage, AgentCore, CodeBuild, S3 and logs) go into `artifacts/extra_costs.json` by hand. Replace them with AWS Cost Explorer's numbers a day later.
+- **Your numbers will differ** within sampling noise, since service-side sampling can't be seeded. Compare whether the fine-tuned model beats the base model on pass@1.
 
-- **Option 1 (09a).** Start the watchdog first in another terminal: `python scripts/09a_watchdog.py`. It deletes the endpoint after 60 minutes at the latest, and deployment refuses to start without it. Delete the endpoint yourself with `--delete`.
-- **Rebuilding the agent.** Rebuilding a runtime that is already READY needs `CONFIRM_REDEPLOY_AGENT_MTRL_DEMO`, because recorded jobs used that runtime.
-- **Unmeasured costs.** Step 11 prices jobs from the tokens AWS billed. Some amounts are computed or estimated by hand into `artifacts/extra_costs.json`, as this run did:
-  - the cross-region copy
-  - imported-model minutes
-  - Bedrock storage
-  - AgentCore, CodeBuild, S3 and logs
+## Project layout
 
-  Replace those with the numbers from AWS Cost Explorer once they appear, about a day later.
-- **Same checks as here.** The invariants check your run against the protocol of the run of record: dataset fingerprints, job hyperparameters, base-model version, 32 x 2 evaluation, traces matching metrics, live tickets and seed, and provenance. Your numbers will differ within sampling noise. Your base-model version may also differ if AWS has published a newer one; that invariant then fails and shows both versions.
-
-The shared library is the `aws` package:
-
-| Folder | Modules | Role |
-|---|---|---|
-| `aws/` | `workflow`, `config`, `guards` | The facade, settings and project paths, confirmation phrases |
-| `aws/setup/` | `provision`, `request_quotas`, `deploy_agent`, `prompt_datasets`, `status`, `cleanup` | Account setup and teardown |
-| `aws/rl/` | `training`, `evaluation`, `pipelines`, `trajectories` | Training, evaluation, pipeline status, recorded conversations |
-| `aws/deploy/` | `deployment`, `endpoint_watchdog`, `hosting_access`, `bedrock_import`, `inference` | Option 1 (endpoint), option 2 (Bedrock import), live inference |
-| `aws/costs/` | `cost_guard`, `ledger`, `cost_snapshot` | Budget guard and costs |
-| `aws/records/` | `evidence`, `provenance` | Evidence files, and what actually ran |
-| `aws/reporting/` | `report_tables`, `report_figures`, `repro_artifacts`, `invariants`, `provenance_checks` | Reports, the repro record, and the invariants |
-
-The agent served by AgentCore is `agent/`: `environment`, `rollout_driver` and `app`. Each script is a thin wrapper over these modules, and the notebook calls the same modules.
+```text
+scripts/      the pipeline, in order: 00 … 15, then 99 (status.py shows what exists in AWS)
+aws/          the library the scripts and the notebook share; start reading at aws/workflow.py
+agent/        the agent AgentCore runs: environment, rollout driver, app
+notebooks/    what to show an audience (see below)
+data/         64 training tickets and 32 held-out tickets, no overlap
+artifacts/    evidence of the run of record: job records, costs, provenance
+reports/      tables, figures and the reproducibility record, rebuilt from artifacts/
+tests/        unit tests, mirroring aws/
+```
 
 ## Notebooks
 
-Everything you show the audience is in `notebooks/`. Open it from the project root with `python -m jupyter lab notebooks/`; the notebook finds the project files itself.
-
-- **`notebooks/sagemaker_mtrl_real_demo.ipynb`:** the presentation notebook, sections 1–14 in the order of the scripts. It runs in replay mode unless a confirmation phrase is set through environment variables. It is generated by `scripts/dev/build_notebook.py`; `--check` confirms that the committed notebook matches the builder.
-- **`notebooks/sagemaker_mtrl_real_demo.executed.ipynb`:** the replay of the run of record with all outputs (presentation copy). It was re-executed on 2026-10-02 after its wording was corrected, and it submitted nothing.
-- **`notebooks/sagemaker_mtrl_real_demo.training-run.ipynb`:** the live log of the training run, kept as recorded. Its code predates the current folder layout, so read it rather than re-run it.
-- **`artifacts/live-inference-run.executed.ipynb`:** the log of the live inference run.
-- **`artifacts/deploy-attempt1-capacity-failure.executed.ipynb`:** the log of the first endpoint attempt. Its "$11.33 billed" line assumed the endpoint billed from creation. The endpoint never reached InService, so it was later recorded as $0; see `endpoint.json` `billing_note`.
-
-To execute and check a notebook:
-
-```bash
-jupyter nbconvert --to notebook --execute --allow-errors \
-    --output sagemaker_mtrl_real_demo.executed.ipynb notebooks/sagemaker_mtrl_real_demo.ipynb
-python scripts/dev/scrub_notebook.py notebooks/sagemaker_mtrl_real_demo.executed.ipynb   # removes sign-in links; shows home as ~
-python scripts/dev/check_notebook.py notebooks/sagemaker_mtrl_real_demo.executed.ipynb
-```
-
-
-## Outputs
-
-- **`reports/tables/` (CSV):**
-  - `evaluation_comparison`, `baseline_evaluations`
-  - `training_steps`, `per_ticket_rewards`
-  - `live_inference`, `run_of_record`, `cost_accounting`
-- **`reports/figures/` (PNG):** training reward curve, before/after evaluation, per-ticket before/after, live inference.
-- **`reports/repro/`:**
-  - `environment_versions.csv` and `run_commands.csv`
-  - `study_metadata.json`: datasets with SHA-256, task, model, the job's own training config, seeds, the run of record, provenance, headline results, cost totals
-  - `compute_accounting.csv` and `artifact_inventory.csv`
-- **`reports/logs/`:** one log per script run, with signed links removed and the home folder shown as `~`. The last 5 per script are kept, on your machine only (git ignores them).
-- **`artifacts/`:** the evidence of the run, the inputs to steps 12–14:
-  - job and result records
-  - the provisioned resource IDs (`resources.json`)
-  - cost and provenance snapshots
-  - the agent's deployed source bundle
-  - the SDK's two pipeline definitions (`base_evaluation_pipeline_definition.json`, `comparison_pipeline_definition.json`)
-
-## Run of record (2026-10-01/02 UTC, account 384887233198, us-west-2)
-
-The run of record was executed through the presentation notebook and module entry points. The numbered scripts were written afterwards to make the same steps repeatable, and call the same modules. Steps 00 and 05–14 were then run against the recorded jobs (read-only). Steps 01–04 and 99 have not been run through the scripts.
-
-| Stage | Identifier | Status | Detail |
-|---|---|---|---|
-| Base evaluation (first attempt) | `59n0c9w40lyx` | Succeeded | pass@1 0, before the agent fix (rollouts ended after 2 model calls) |
-| Base evaluation | `7kz12i8e43ip` | Succeeded | started 23:14:50 UTC; pass@1 0.50, mean reward 0.875 |
-| Training (rejected attempt) | `…-mtrl-20261002040240` | Failed | 32 prompts but `global_batch_size` 32; nothing billed |
-| Training | `openai-reasoning-gpt-oss-20b-mtrl-20261002040558` | Completed | started 00:05:58 UTC; 10/10 steps in 19.2 min; model package `…-mtrl-mpg/1` |
-| Comparison evaluation | `8hvze02od4o0` | Succeeded | started 00:26:56 UTC; pass@1 base 0.578 → fine-tuned 0.781 |
-| SageMaker endpoint (option 1) | `mtrl-support-demo` | Deleted | InsufficientInstanceCapacity for ml.g6e.12xlarge; never InService |
-| Bedrock import (option 2) | `mtrl-support-import-20261002051532` | Completed | imported model `ffakmfmpoqbi` (us-east-1); job 05:15–05:29 UTC |
-| Live inference | seed 2026 | Recorded | fully solved: before 0/6, after 5/6 |
-
-**What ran.** These records were captured afterwards from AWS by step 11b and are checked by invariants:
-
-- **Agent runtime.** Every rollout of the baseline of record, training and comparison was served by AgentCore runtime version 7. It went live at 23:13:23 UTC, before all three jobs, and has not changed since.
-- **Agent image.** Image `sha256:af5cb1b29526…` was built from `python:3.12-slim@sha256:f77ac9e4…` and the source bundle saved as `artifacts/agent_deployed_source.zip` (SHA-256 `c3507c9b…`).
-- **Agent code.** The repository's `agent/environment.py`, `agent/rollout_driver.py` and `agent/Dockerfile` are byte-identical to that bundle. `agent/app.py` keeps the same system prompt, tool and opening message. After the deploy it was refactored so live inference can reuse the episode code (`run_episode()`); the bundle keeps the exact version that ran.
-- **Imported model.** The Bedrock import read the us-east-1 copy of the trained package's merged weights. All three weight files (41.8 GB) and every other copied file match the source in size, and the small files also match by checksum. Only the two documented files were changed: the chat template in `tokenizer_config.json`, and the end-of-sequence IDs in `generation_config.json`.
-
-**Retrofits, disclosed.** Some evidence was written before the current code. These details were added or corrected later:
-
-- `bedrock_import.json` got its `model_package_arn` field after the import, copied from `training_job.json`. The independent check is the file comparison above.
-- `training_job.json` got the job's own `training_config` and `agent_config` on 2026-10-02, read back from AWS.
-- `endpoint.json` was corrected from an assumed $8.39 to $0, with a `billing_note`, because the endpoint never ran.
-- The import of record used the older copy folder `imported-models/mtrl-support-gpt-oss-20b-ft/`; the code now uses `imported-models/<group>-v<version>/`.
-- The endpoint attempt used a 70-minute lifetime limit; the code now uses 60.
-
-**Held-out evaluation** (32 tickets x 2 rollouts per model, one pipeline for both):
-
-| Metric | Base model | Fine-tuned | Change |
-|---|---|---|---|
-| Ticket fully solved (pass@1) | 0.578 | 0.781 | +0.203 |
-| Solved in 1 of 2 tries (pass@2) | 0.813 | 0.938 | +0.125 |
-| Mean reward (partial credit) | 0.883 | 0.926 | +0.043 |
-| Rollouts fully solved | 37 / 64 | 50 / 64 | +13 |
-
-**Further results:**
-
-- **Training curve.** The mean training reward rose from 0.889 at step 1 to 0.961 at step 10.
-- **Per ticket.** By mean reward, the fine-tuned model scored higher on 13 held-out tickets, the same on 13 and lower on 6.
-- **Live inference.** The base model on Bedrock fully solved 0 of 6 tickets: each time it tried `restart_router` first and ran out of turns at 0.75. The fine-tuned imported model fully solved 5 of 6.
-
-The live run is an illustration, not the measurement. The two models took different paths through the same agent: the base model made its tool calls natively, in one model call per ticket, while the imported model returned each action as JSON text that the agent parsed (4 `text_fallback_actions` and 4 model calls per ticket). The measurement is the held-out evaluation above, which ran both models through the same pipeline and serving stack.
-
-**Cost: $5.78 against the $25 hard cap.** AWS Cost Explorer is the final bill, about a day after use.
-
-| Item | USD | How it was obtained |
-|---|---|---|
-| Training | 2.83 | billed tokens x AWS Price List rate |
-| Base evaluations (both) | 0.04 | billed tokens x rate |
-| Comparison (both models) | 0.07 | billed tokens x rate |
-| Cross-region weight copy | 0.84 | computed: 41.8 GB x $0.02/GB |
-| Imported-model inference | 2.00 | estimated: 1 CMU x ~35 active minutes x $0.0572 |
-| Endpoint | 0.00 | never InService, so no instance ran |
-
-The total breaks down as $2.94 from billed tokens and $2.84 computed or estimated. A further $2 is allowed for unmeasured AgentCore, CodeBuild, S3 and logs, giving $7.78.
-
-`artifacts/cost_accounting.json` holds each line's token usage, plus the rates used: USD per million tokens of prefill 0.12, sample 0.30 and train 0.36, and the hosting price. The cost invariant recomputes every token line from those values.
-
-## Reproducibility
-
-- **Exact.** Steps 12–14 rebuild every table and figure, and the repro record, from `artifacts/` with identical values and no AWS access. This was verified with credentials disabled. Only the generation timestamp and the installed-environment rows depend on the machine.
-- **Re-attachable.** In the run's account, steps 05–11b re-read the same jobs, metrics, traces and build records. The recorded conversations recompute the evaluation's solved counts, pass@1 and mean reward exactly (37 and 50 solved; means 0.8828 and 0.9258).
-- **Statistical.** A new run uses the same code, data, settings and pins, but sampling cannot be seeded.
-  - **Sample size.** With 64 rollouts per model, pass@1 has a standard error of about 0.05–0.06, so differences under about 0.1 are noise.
-  - **Same model, two runs.** The base model scored pass@1 0.50 in the baseline and 0.578 in the comparison, on the same tickets.
-  - **What to check.** Whether the fine-tuned model beats the base model on pass@1, not the exact values.
-- **Pinned and recorded.**
-  - **Data:** the datasets, by SHA-256.
-  - **Training settings:** the job's own hyperparameters (`max_steps` 10, `group_size` 4, `global_batch_size` 32, `sampling_max_tokens` 512). The remaining hyperparameters are the service defaults for that model version. The SDK reports them in notebook section 6 as learning rate 1e-5, LoRA rank/alpha 32/64 and PPO loss; the job itself does not echo them back.
-  - **Base model:** version 3.43.0, recorded by the job. The SDK picks it, so it is not enforced; a newer version is caught by an invariant.
-  - **Evaluation:** 2 rollouts per ticket, pass@1/2.
-  - **Packages:** local and container packages, by lock files.
-  - **Agent:** the source bundle and image digest.
-- **History kept honest:**
-  - The first baseline scored 0 because the agent loop stopped early; it is kept as `base_evaluation.pre_fix.json`.
-  - The first training job was rejected for its dataset size, at no charge.
-  - The endpoint attempt found no GPU capacity, also at no charge.
-  - All three appear in `run_of_record.csv`. The first baseline is also a cost line; the other two billed nothing.
-- **Version control.** The project folder is not under version control yet. Committing it, or archiving it with checksums, gives the evidence a fixed reference.
+- **`notebooks/sagemaker_mtrl_real_demo.ipynb`:** the presentation notebook, sections 1–14 in script order. It replays the recorded run unless a confirmation phrase is set through `MTRL_*` environment variables, and it needs the AWS setup from steps 01–04.
+- **`notebooks/sagemaker_mtrl_real_demo.executed.ipynb`:** the replay with all outputs. Present from this one.
+- **`notebooks/sagemaker_mtrl_real_demo.training-run.ipynb`:** the log of the live training run, kept as recorded. Read it; don't re-run it.
+- **`artifacts/live-inference-run.executed.ipynb`** and **`artifacts/deploy-attempt1-capacity-failure.executed.ipynb`:** the logs of the live inference and the first endpoint attempt. The latter's "$11.33 billed" line is outdated: the endpoint never started, so it cost $0.
 
 ## Tests
 
 ```bash
-python -m pytest                       # 302 tests: tests/ (254) and agent/ (48)
+python -m pytest                       # no AWS access needed
 ruff check aws agent scripts tests
 ```
-
-Run them from the project root. They need no AWS access or configuration.
 
 ## Teardown
 
@@ -336,21 +107,11 @@ python scripts/status.py                                   # what exists now (re
 python scripts/99_teardown.py --confirm DELETE_MTRL_DEMO
 ```
 
-This deletes, in order:
+This deletes the endpoint (if any), the Bedrock imported models with their us-east-1 copy bucket and import role, the AgentCore runtime, the MLflow app, the ECR repository, the S3 bucket, both IAM roles and the budget. Until then, Bedrock storage costs about $1.95 a month for the imported model.
 
-- the endpoint, if any
-- the Bedrock imported models, the us-east-1 copy bucket, and the import role (only if this demo tagged it)
-- the AgentCore runtime and the MLflow app, including its traces
-- the ECR repository and the S3 bucket, which holds the datasets, job outputs and the trained weights
-- both IAM roles and the budget
+Left behind, to delete in the AWS console:
 
-Some resources are left behind; delete them in the AWS console:
+- **From the AgentCore starter toolkit:** the CodeBuild project `bedrock-agentcore-mtrl_support_agent-builder`, its `AmazonBedrockAgentCoreSDKCodeBuild-*` role, the `bedrock-agentcore-codebuild-sources-*` bucket and the CloudWatch log groups.
+- **The model package record** in the SageMaker Model Registry (its weights go with the bucket).
 
-- **Created by the AgentCore starter toolkit:**
-  - the CodeBuild project `bedrock-agentcore-mtrl_support_agent-builder`
-  - its `AmazonBedrockAgentCoreSDKCodeBuild-*` role
-  - the `bedrock-agentcore-codebuild-sources-*` bucket
-  - the CloudWatch log groups
-- **Model package record.** The model package record stays in the SageMaker Model Registry, but its weights are deleted with the bucket.
-
-Until teardown, Bedrock storage costs about $1.95 per month for the imported model (1 custom model unit, Amazon Bedrock pricing). The evidence in `artifacts/` and `reports/` is kept, so steps 12–14 still work afterwards.
+The evidence in `artifacts/` and `reports/` is kept, so the offline steps still work afterwards.
