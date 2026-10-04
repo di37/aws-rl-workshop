@@ -2,8 +2,9 @@
 # (aws/, agent/, scripts/, data/, artifacts/ evidence, reports/, tests/, docs, pinned environments).
 # Everything below stays on your machine only.
 
-# Personal talk materials, other coursework, and superseded code
-/presentation/
+# Personal talk materials (except the final talk deck), other coursework, and superseded code
+/presentation/*
+!/presentation/Multi-Turn RL on SageMaker AI - Final - v2.pptx
 /REPRO_UL_*.pdf
 /legacy/
 /artifacts/superseded/
